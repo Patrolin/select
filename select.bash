@@ -56,8 +56,8 @@ _select_option() {
 	trap "stty $oldstty; blinking_set 1" 2
 	echo $1
 	shift
-	for opt; do printf "\n"; done
 	cursor_get
+	for opt; do printf "\n"; done
 	local lastrow=$ROW
 	local startrow=$(($lastrow - $#))
 	blinking_set 0
@@ -67,9 +67,9 @@ _select_option() {
 		for opt; do
 			cursor_set $(($startrow + $i)) 0
 			if [ $i -eq $selected ]; then
-				printf "  $ESC[7m $opt $ESC[27m";
+				printf "   $ESC[7m $opt $ESC[27m   ";
 			else
-				printf "   $opt ";
+				printf "    $opt    ";
 			fi
 			((i++))
 		done
